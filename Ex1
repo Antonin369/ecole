@@ -1,0 +1,59 @@
+// Classe Ville
+class Ville {
+    private String nom;
+    private int habitants;
+
+    // Constructeur
+    public Ville(String nom, int habitants) {
+        this.nom = nom;
+        this.habitants = habitants;
+    }
+
+    // Méthode pour afficher la présentation de la ville
+    public void afficher() {
+        System.out.println(nom + ", " + habitants + " habitants");
+    }
+
+    // Setter pour modifier le nombre d'habitants
+    public void setHabitants(int habitants) {
+        if (habitants > 0) {
+            this.habitants = habitants;
+        } else {
+            System.out.println("Le nombre d'habitants doit être positif.");
+        }
+    }
+}
+
+// Classe Capitale qui hérite de Ville
+class Capitale extends Ville {
+    private String pays;
+
+    // Constructeur
+    public Capitale(String nom, int habitants, String pays) {
+        super(nom, habitants);
+        this.pays = pays;
+    }
+
+    // Méthode pour afficher la présentation de la capitale
+    @Override
+    public void afficher() {
+        System.out.println(super.nom + ", " + super.habitants + " habitants, capitale de la " + pays);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Création d'une ville
+        Ville ville = new Ville("Nancy", 105162);
+        // Création d'une capitale
+        Capitale capitale = new Capitale("Paris", 2145906, "France");
+
+        // Affichage des informations
+        ville.afficher();  // Affiche: Nancy, 105162 habitants
+        capitale.afficher();  // Affiche: Paris, 2145906 habitants, capitale de la France
+
+        // Modifier le nombre d'habitants de la ville
+        ville.setHabitants(110000);
+        ville.afficher();  // Affiche: Nancy, 110000 habitants
+    }
+}
